@@ -4,12 +4,13 @@ import 'react-tippy/dist/tippy.css'
 
 const Task = ({ task, onDelete, onToggle }) => {
   return (
+    //TODO: Conditonally show tooltip, (reminder) ? "Doubleclick to activate reminder":"Doubleclick to remove reminder"
     <Tooltip
     title="Doubleclick to toggle reminder"
     position="bottom"
     trigger="mouseenter"
-    theme= "dark"
-    effect= "float"
+    theme= "light"
+    animation= "scale"
     >
       <div className={`task ${task.reminder ? 'reminder' : ''}`} onDoubleClick={()=>{
           onToggle(task.id) 

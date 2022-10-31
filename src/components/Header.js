@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { useLocation } from 'react-router-dom'
 import Button from './Button'
 
 const Header = ({ title, showAddTasks, onShowAddTasks, likeCount, onLike }) => {
@@ -8,11 +9,13 @@ const Header = ({ title, showAddTasks, onShowAddTasks, likeCount, onLike }) => {
   // const onAdd = (e) => {
   //   console.log(e.target.childNodes[0].data + " clicked!")
   // }
+  const location = useLocation();
+
   return (
     <header className="header">
         <h1>{title}</h1>
         <div>
-          <Button color={showAddTasks ?  "red" : "#024110"} text={showAddTasks ? "Close" : "Add"} onClick={onShowAddTasks}/>
+          {location.pathname === '/' && <Button color={showAddTasks ?  "red" : "#024110"} text={showAddTasks ? "Close" : "Add"} onClick={onShowAddTasks}/>}
           {/* <h4 style={{display:'inline'}}>{likeCount}</h4> */}
           <Button text="Like" onClick={onLike} likes={likeCount} />
         </div>

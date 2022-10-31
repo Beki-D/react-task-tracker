@@ -23,15 +23,9 @@
       "day": "10pm of everyday",
       "reminder": true,
       "id": 4
-    },
-    {
-      "text": "Learn some more backend",
-      "day": "10th Nov 2022",
-      "reminder": true,
-      "id": 5
     }
   ],
   "likes": {
-    "count": 17
+    "count": 21
   }
 }

@@ -1,7 +1,12 @@
-import {React, useEffect} from 'react'
-import Header from "./components/Header"
-import Tasks from "./components/Tasks"
-import AddTask from "./components/AddTask"
+import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {React, useEffect} from 'react';
+import Header from "./components/Header";
+import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
+import About from './components/About';
+import Footer from './components/Footer';
+
 import { useState } from "react"
 
 const port = '5000'
@@ -127,14 +132,21 @@ const App = () => {
   }
 
   return (
-    <div className="container">
-      <Header showAddTasks={showAddTasks ? 1 : 0} onShowAddTasks={onAddTasks} likeCount={likeCount} onLike={onLiked} />
-      {showAddTasks && <AddTask onAdd={addTask}/>}
-      {(tasks.length > 0) ? 
-        (<Tasks tasks={tasks} onDelete = {deleteTask} onToggle = {toggleReminder}/>) : 
-        (<p style={{color: 'red'}}>No tasks available!</p>)
-      }
-     </div>
+    <Router>
+      <div className="container">
+        <Header showAddTasks={showAddTasks ? 1 : 0} onShowAddTasks={onAddTasks} likeCount={likeCount} onLike={onLiked} />
+        {showAddTasks && <AddTask onAdd={addTask}/>}
+        <Route path="/" exact render={(props) => (
+          <>
+            {(tasks.length > 0) ? 
+              (<Tasks tasks={tasks} onDelete = {deleteTask} onToggle = {toggleReminder}/>) : 
+              (<p style={{color: 'red'}}>No tasks available!</p>)}
+          </>
+        )} />
+        <Route path="/about" component={About} />
+        <Footer />
+      </div>
+     </Router>
   );
 }
 
