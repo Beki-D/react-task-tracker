@@ -17,7 +17,7 @@
 
 In this React project I was able to build a task tracker app. I learned about components, props, state, hooks, working with API using JSON-server as a basic backend and so much more.
 
-I made this project in October 2022, following React JS Crash Course tutorial from Brad Traversy, @Traversy Media on youtube. I've deviated a bit and added my own addition to his solutions and I plan to improve this even more on version 2.
+I made this project in October 2022, following React JS Crash Course tutorial from Brad Traversy, @Traversy Media on youtube. I've deviated a bit and added my own codes to his solutions and I plan to improve this even more on version 2.
 
 One of my most favourite people to follow on Youtube, learned quite a lot from his videos over the years. 
 
