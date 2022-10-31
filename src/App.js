@@ -6,8 +6,8 @@ import AddTask from "./components/AddTask"
 import { useState } from "react"
 
 const App = () => {
-  // const name = "Beki"
-
+  const [showAddTasks, setShowAddTasks] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
   const [tasks, setTasks] = useState([
     {
         id: 1,
@@ -27,36 +27,55 @@ const App = () => {
         day: 'February 5th at 2:00pm',
         reminder: false
     }
-]
-)
-//Add task
-const addTask = (task) => {
-  console.log(task)
-}
-
-//Deletes task
-const deleteTask = (id) => {
-  setTasks(tasks.filter((task) => task.id !== id))
-  //console.log('Delete', id)
-} 
-
-//Toggle Reminder
-const toggleReminder = (id) => {
-  setTasks(tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task
-    )
+  ]
   )
-  //console.log(id)
-}
+
+  const onAddTasks = () => {setShowAddTasks(!showAddTasks)}
+
+  const onLiked = () => {
+    var newLikeCount = likeCount;
+    newLikeCount= newLikeCount + 1;
+    setLikeCount(newLikeCount);
+  }
+
+
+  const addTask = (task) => {
+    // My first attempt solution: I used sequential ID
+
+    // let newTasks = [...tasks];
+    // const id = newTasks.length + 1;
+    // task = {id, ...task}
+    // newTasks.push(task);
+    // task.id = newTasks.length;
+    // setTasks(newTasks);
+
+    // Traversy's better solution
+
+    const id = Math.floor(Math.random() * 100000) + 1
+    const newTask = { id, ...task }
+    console.log(newTask)
+    setTasks([...tasks, newTask]);
+  }
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+    //console.log('Delete', id)
+  } 
+
+  const toggleReminder = (id) => {
+    setTasks(tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task
+      )
+    )
+  }
 
   return (
     <div className="container">
-      <Header/>
-      <AddTask onAdd={addTask}/>
-      {tasks.length>0 ? (
-        <Tasks tasks={tasks} onDelete = {deleteTask} onToggle = {toggleReminder}/>
-        ) : (
-          <p style={{color: 'red'}}>No tasks available!</p>
-        )}
+      <Header showAddTasks={showAddTasks ? 1 : 0} onShowAddTasks={onAddTasks} likeCount={likeCount} onLike={onLiked} />
+      {showAddTasks && <AddTask onAdd={addTask}/>}
+      {(tasks.length > 0) ? 
+        (<Tasks tasks={tasks} onDelete = {deleteTask} onToggle = {toggleReminder}/>) : 
+        (<p style={{color: 'red'}}>No tasks available!</p>)
+      }
      </div>
   );
 }

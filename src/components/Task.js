@@ -12,7 +12,7 @@ const Task = ({ task, onDelete, onToggle }) => {
                 onClick = {() => onDelete(task.id)}
             />
         </h3>
-        <p> {task.day} </p>
+        <p style={{color: 'rgb(2, 65, 16'}}> {task.day} </p>
     </div>
   )
 }
