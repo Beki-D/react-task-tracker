@@ -1,5 +1,5 @@
 # REACT-JS TASK TRACKER APP
-![App screenshot](public\Screenshots\React Project Traversy 2.jpg)
+![App screenshot](./public/Screenshots/React%20Project%20Traversy%202.jpg)
 
 In this React project I was able to build a task tracker app. I learned about components, props, state, hooks, working with an API for basic backend and so much more.
 
