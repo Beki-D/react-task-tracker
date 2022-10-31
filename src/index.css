@@ -8,6 +8,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background: rgba(70, 131, 180, 0.526);
 }
 
 .container {
@@ -18,6 +19,7 @@ body {
   border: 3px groove steelblue;
   padding: 30px;
   border-radius: 5px;
+  background-color:rgb(255, 255, 255);
 }
 
 .header {

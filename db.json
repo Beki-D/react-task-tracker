@@ -10,7 +10,7 @@
       "id": 2,
       "text": "Real Business Meeting",
       "day": "February 15th at 12:30pm",
-      "reminder": false
+      "reminder": true
     },
     {
       "text": "Test",
