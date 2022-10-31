@@ -1,3 +1,15 @@
+# REACT-JS TASK TRACKER APP
+![App screenshot](public\Screenshots\React Project Traversy 2.jpg)
+
+In this React project I was able to build a task tracker app. I learned about components, props, state, hooks, working with an API for basic backend and so much more.
+
+I made this project in October 2022, following React JS Crash Course tutorial from Brad Traversy, @Traversy Media on youtube. I've deviated a bit and added my own addition to his solutions and I plan to improve this even more on version 2.
+
+One of my most favourite people to follow on Youtube, learned quite a lot from him over the years. 
+
+Here's a link to his video: https://www.youtube.com/watch?v=w7ejDZ8SWv8
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

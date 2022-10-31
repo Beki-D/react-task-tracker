@@ -13,19 +13,19 @@
       "reminder": true
     },
     {
-      "text": "Watch some Football",
-      "day": "Sunday of (never)",
-      "reminder": false,
-      "id": 3
-    },
-    {
       "text": "Code your website",
       "day": "10pm of everyday",
       "reminder": true,
       "id": 4
+    },
+    {
+      "text": "Pay the bills",
+      "day": "21 Feb 2023",
+      "reminder": true,
+      "id": 5
     }
   ],
   "likes": {
-    "count": 21
+    "count": 25
   }
 }
