@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types'
 import { FiThumbsUp } from 'react-icons/fi'
 
-const Button = ({ color, text, onClick}) => {
+const Button = ({ color, text, onClick, likes}) => {
     return (
         <button onClick={onClick} className="btn" style={{ backgroundColor: color}}>
-            {text+" "}
-            {text === 'Like' && <FiThumbsUp /> }
+            {text !== 'Like' && text}
+            {(text === 'Like') && 
+                <>
+                    <FiThumbsUp />
+                    {" " + likes}
+                </> 
+            }
         </button>
   )
 }

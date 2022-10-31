@@ -13,8 +13,8 @@ const Header = ({ title, showAddTasks, onShowAddTasks, likeCount, onLike }) => {
         <h1>{title}</h1>
         <div>
           <Button color={showAddTasks ?  "red" : "#024110"} text={showAddTasks ? "Close" : "Add"} onClick={onShowAddTasks}/>
-          <h4 style={{display:'inline'}}>{likeCount}</h4>
-          <Button color="#437cac" text="Like" onClick={onLike} />
+          {/* <h4 style={{display:'inline'}}>{likeCount}</h4> */}
+          <Button text="Like" onClick={onLike} likes={likeCount} />
         </div>
     </header>
   )

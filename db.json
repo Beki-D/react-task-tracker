@@ -13,10 +13,19 @@
       "reminder": true
     },
     {
-      "text": "Test",
-      "day": "10 mon",
+      "text": "Watch some Football",
+      "day": "Sunday of (never)",
       "reminder": false,
       "id": 3
+    },
+    {
+      "text": "Code your website",
+      "day": "10pm of everyday",
+      "reminder": true,
+      "id": 4
     }
-  ]
+  ],
+  "likes": {
+    "count": 62
+  }
 }
