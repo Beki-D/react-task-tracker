@@ -4,22 +4,27 @@ import Tasks from "./components/Tasks"
 import AddTask from "./components/AddTask"
 import { useState } from "react"
 
+const port = '5000'
+const apiEndpoint = "http://localhost:" + port;
+
 const App = () => {
   const [showAddTasks, setShowAddTasks] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState("");
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     const getTasks = async () => {
       const tasksFromServer = await fetchTasks();
+      const likesCountFromServer = await fetchLikes();
       setTasks(tasksFromServer);
+      setLikeCount(likesCountFromServer.count);
     }
     getTasks();
   }, [])
 
   //Fetch tasks
   const fetchTasks = async () => {
-    const res = await fetch("http://localhost:5000/tasks");
+    const res = await fetch(apiEndpoint + "/tasks");
     const data = await res.json();
 
     return data
@@ -27,7 +32,7 @@ const App = () => {
 
   //Fetch single task
   const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`);
+    const res = await fetch(apiEndpoint + `/tasks/${id}`);
     const data = await res.json();
     
     return data
@@ -35,7 +40,7 @@ const App = () => {
   
   //Fetch likes count
   const fetchLikes = async () => {
-    const res = await fetch("http://localhost:5000/likes");
+    const res = await fetch(apiEndpoint + "/likes");
     const data = await res.json();
 
     return data
@@ -46,7 +51,7 @@ const App = () => {
   
   //Adds a task
   const addTask = async (task) => {
-    const res = await fetch('http://localhost:5000/tasks/', {
+    const res = await fetch(apiEndpoint + '/tasks/', {
       method: "POST",
       headers: {
         'content-type': 'application/json'
@@ -75,7 +80,7 @@ const App = () => {
   
   //Deletes a task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, {method: 'DELETE'});
+    await fetch(apiEndpoint + `/tasks/${id}`, {method: 'DELETE'});
     
     setTasks(tasks.filter((task) => task.id !== id));
   } 
@@ -85,7 +90,7 @@ const App = () => {
     const taskToToggle = await fetchTask(id)
     const updatedTask = {...taskToToggle, reminder: !taskToToggle.reminder }
     
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+    const res = await fetch(apiEndpoint + `/tasks/${id}`, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json',
@@ -107,8 +112,9 @@ const App = () => {
     const likesCount = await fetchLikes();
     console.log(likesCount)
     var updatedCount = {...likesCount.count, count: likesCount.count + 1};
-
-    const res = await fetch('http://localhost:5000/likes', {
+    
+    //updating the JSON item wz PUT request
+    const res = await fetch(apiEndpoint + '/likes', {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json',
