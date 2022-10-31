@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useEffect} from 'react'
 import Header from "./components/Header"
 import Tasks from "./components/Tasks"
 import AddTask from "./components/AddTask"
@@ -8,40 +8,57 @@ import { useState } from "react"
 const App = () => {
   const [showAddTasks, setShowAddTasks] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
-  const [tasks, setTasks] = useState([
-    {
-        id: 1,
-        text: "Go see the doctor",
-        day: 'February 5th at 2:30pm',
-        reminder: true
-    },
-    {
-        id: 2,
-        text: "Real Business Meeting",
-        day: 'February 15th at 12:30pm',
-        reminder: true
-    },
-    {
-        id: 3,
-        text: "Go to the gym",
-        day: 'February 5th at 2:00pm',
-        reminder: false
-    }
-  ]
-  )
+  const [tasks, setTasks] = useState([]);
 
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks();
+      setTasks(tasksFromServer);
+    }
+    getTasks();
+  }, [])
+
+  //Fetch tasks
+  const fetchTasks = async () => {
+    const res = await fetch("http://localhost:5000/tasks");
+    const data = await res.json();
+
+    return data
+  }
+
+  //Fetch single task
+  const fetchTask = async (id) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`);
+    const data = await res.json();
+
+    return data
+  }
+
+  //Toggles Show Add Task
   const onAddTasks = () => {setShowAddTasks(!showAddTasks)}
 
+  //Increment the like count state
   const onLiked = () => {
     var newLikeCount = likeCount;
     newLikeCount= newLikeCount + 1;
     setLikeCount(newLikeCount);
   }
 
+  //Adds a task
+  const addTask = async (task) => {
+    const res = await fetch('http://localhost:5000/tasks/', {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    })
 
-  const addTask = (task) => {
+    const data = await res.json();
+
+    setTasks([...tasks, data]);
+
     // My first attempt solution: I used sequential ID
-
     // let newTasks = [...tasks];
     // const id = newTasks.length + 1;
     // task = {id, ...task}
@@ -49,21 +66,38 @@ const App = () => {
     // task.id = newTasks.length;
     // setTasks(newTasks);
 
-    // Traversy's better solution
-
-    const id = Math.floor(Math.random() * 100000) + 1
-    const newTask = { id, ...task }
-    console.log(newTask)
-    setTasks([...tasks, newTask]);
+    // // Traversy's better solution
+    // const id = Math.floor(Math.random() * 100000) + 1
+    // const newTask = { id, ...task }
+    // console.log(newTask)
+    // setTasks([...tasks, newTask]);
   }
 
-  const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id))
-    //console.log('Delete', id)
+  //Deletes a task
+  const deleteTask = async (id) => {
+    await fetch(`http://localhost:5000/tasks/${id}`, {method: 'DELETE'});
+
+    setTasks(tasks.filter((task) => task.id !== id));
   } 
 
-  const toggleReminder = (id) => {
-    setTasks(tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task
+  //Toggles the reminder checkbox
+  const toggleReminder = async (id) => {
+    const taskToToggle = await fetchTask(id)
+    const updatedTask = {...taskToToggle, reminder: !taskToToggle.reminder }
+
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedTask)
+    })
+    const data = await res.json();
+
+    setTasks(tasks.map((task) => 
+      task.id === id ? 
+        {...task, reminder: data.reminder} : 
+        task
       )
     )
   }
