@@ -11,6 +11,9 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-scripts": "5.0.1",
+    "react-tippy": "^1.4.0",
+    "react-tooltip": "^4.4.3",
+    "tippy.js": "^6.3.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

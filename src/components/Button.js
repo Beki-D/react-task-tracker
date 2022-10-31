@@ -12,7 +12,7 @@ const Button = ({ color, text, onClick, likes}) => {
                 </> 
             }
         </button>
-  )
+    )
 }
 
 Button.defaultProps = {
