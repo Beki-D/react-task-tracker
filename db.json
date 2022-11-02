@@ -15,7 +15,7 @@
     {
       "text": "Code your website",
       "day": "10pm of everyday",
-      "reminder": true,
+      "reminder": false,
       "id": 4
     },
     {
