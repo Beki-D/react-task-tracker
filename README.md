@@ -1,10 +1,9 @@
 <h1>REACT-JS TASK TRACKER APP</h1>
 
-| Version 1     | Snapshots       |
-| -------------- | -------------- |
-| ![App screenshot](./public/Screenshots/React%20Project%20Traversy%202.jpg) | ![App screenshot](./public/Screenshots/React%20Project%20Traversy%203.jpg) |
-| ![App screenshot](./public/Screenshots/React%20Project%20Traversy%204.jpg) | ![App screenshot](./public/Screenshots/React%20Project%20Traversy%205.jpg) |
-| ![App screenshot](./public/Screenshots/React%20Project%20Traversy%209.jpg) | ![App screenshot](./public/Screenshots/React%20Project%20Traversy%208.jpg) |
+| Version 1     | Snapshots       | |
+| -------------- | -------------- |-------------- |
+| ![App screenshot](./public/Screenshots/React%20Project%20Traversy%202.jpg) | ![App screenshot](./public/Screenshots/React%20Project%20Traversy%203.jpg) | ![App screenshot](./public/Screenshots/React%20Project%20Traversy%204.jpg) | 
+| ![App screenshot](./public/Screenshots/React%20Project%20Traversy%205.jpg) | ![App screenshot](./public/Screenshots/React%20Project%20Traversy%209.jpg) | ![App screenshot](./public/Screenshots/React%20Project%20Traversy%208.jpg) |
 
  
  
