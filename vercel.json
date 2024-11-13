@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/**/*",
+      "src": "package.json",
       "use": "@vercel/static-build"
     },
     {
@@ -17,10 +17,6 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/build/index.html"
-    },
-    {
-      "src": "/404",
       "dest": "/build/index.html"
     }
   ]
