@@ -18,6 +18,10 @@
     {
       "src": "/(.*)",
       "dest": "/build/index.html"
+    },
+    {
+      "src": "/404",
+      "dest": "/build/index.html"
     }
   ]
 }
