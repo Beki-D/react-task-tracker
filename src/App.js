@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import { useState } from "react";
 
 const apiEndpoint =
-  process.env.REACT_APP_API_ENDPOINT || "http://localhost:8000";
+  "/api" || process.env.REACT_APP_API_ENDPOINT || "http://localhost:8000";
 
 const App = () => {
   const [showAddTasks, setShowAddTasks] = useState(false);
